@@ -24,8 +24,11 @@ The workflow that I use is...
 5. Run code on rivanna
 6. Use rsync to fetch results from rivanna back to the cs servers
 
+https://www.rc.virginia.edu/userinfo/rivanna/storage/:
 > Rivanna’s scratch file system has a limit of 10TB per user. This policy is in place to guarantee the stability and performance of the scratch file system. Scratch is intended as a temporary work directory. It is not backed up and files that have not been accessed for more than 90 days are marked for deletion. Users are encouraged to back up their important data. Home directories and leased storage are not subject to this policy.
 
+From Anshuman:
+> Thus, it is advisable to have all your scripts and data in the /scratch directory, even your Anaconda environment. You can specify a location for your Conda environment with the --prefix <PATH> flag while running conda create.
 
 ### Moving data to Rivanna:
 You should generally try to put as much stuff as you can into the `/scratch/YOURCOMPUTINGID` directory

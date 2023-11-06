@@ -1,5 +1,7 @@
 # rivanna-notes
 
+Based on https://www.anshumansuri.me/post/uva_rivanna/
+
 #### Why Rivanna over the CS servers?
 Currently, the CS servers allocate based on machine and not based on GPU, which means you could potentially be sharing GPU memory with other people's programs. (This should be fixed next semester (Spring 2024) though)
 
@@ -98,4 +100,4 @@ python main.py
 
 (This script uses GPUs on the GPUPOD https://www.rc.virginia.edu/userinfo/rivanna/basepod/)
 
-
+#### Warning: Do NOT use the CUDA_VISIBLE_DEVICES flag on rivanna

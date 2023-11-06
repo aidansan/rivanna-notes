@@ -12,6 +12,23 @@ Host rivanna
   ProxyJump YOURCOMPUTINGID@portal.cs.virginia.edu
 ```
 
+### Scratch directory:
+You should try to put as much stuff as you can into the `/scratch/YOURCOMPUTINGID`, because reading and writing is faster, but the people at rivanna delete unaccessed data.
+The workflow that I use is...
+1. Do development on the cs servers
+2. Commit to github
+3. Pull code from github into the scratch directory on the rivanna servers 
+4. Run code on rivanna
+5. Use rsync to fetch results from rivanna back to the cs servers
+
+> Rivanna’s scratch file system has a limit of 10TB per user. This policy is in place to guarantee the stability and performance of the scratch file system. Scratch is intended as a temporary work directory. It is not backed up and files that have not been accessed for more than 90 days are marked for deletion. Users are encouraged to back up their important data. Home directories and leased storage are not subject to this policy.
+
+
+### Moving data to Rivanna:
+You should generally try to put as much stuff as you can into the `/scratch/YOURCOMPUTINGID` directory
+I use a command called `rsync`, but SCP or filezilla would probably work too
+
+
 ### Comparing CS Servers vs Rivanna
 Example CS server slurm script:
 ```

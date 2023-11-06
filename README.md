@@ -16,18 +16,23 @@ Host rivanna
 You should try to put as much stuff as you can into the `/scratch/YOURCOMPUTINGID`, because reading and writing is faster, but the people at rivanna delete unaccessed data.
 The workflow that I use is...
 1. Do development on the cs servers
-2. Commit to github
-3. Pull code from github into the scratch directory on the rivanna servers 
-4. Run code on rivanna
-5. Use rsync to fetch results from rivanna back to the cs servers
+2. Push data to rivanna
+3. Commit to github
+4. Pull code from github into the scratch directory on the rivanna servers 
+5. Run code on rivanna
+6. Use rsync to fetch results from rivanna back to the cs servers
 
 > Rivanna’s scratch file system has a limit of 10TB per user. This policy is in place to guarantee the stability and performance of the scratch file system. Scratch is intended as a temporary work directory. It is not backed up and files that have not been accessed for more than 90 days are marked for deletion. Users are encouraged to back up their important data. Home directories and leased storage are not subject to this policy.
 
 
 ### Moving data to Rivanna:
 You should generally try to put as much stuff as you can into the `/scratch/YOURCOMPUTINGID` directory
-I use a command called `rsync`, but SCP or filezilla would probably work too
-
+I use a command called `rsync`, but `scp` or filezilla would probably work too
+I added a few commands to my `~/.bashrc` to make syncing easier
+```
+alias pushrivd="rsync -avzh /p/PROJECTDIRNAME/data/ COMPUTINGID@rivanna.hpc.virginia.edu:/scratch/COMPUTINGID/PROJECTDIRNAME/data/ --exclude={}"
+alias pullrivlog="rsync -avzh COMPUTINGID@rivanna.hpc.virginia.edu:/scratch/COMPUTINGID/PROJECTDIRNAME/logfiles/ /p/PROJECTDIRNAME/logfiles/ --exclude={}"
+```
 
 ### Comparing CS Servers vs Rivanna
 Example CS server slurm script:
@@ -59,7 +64,7 @@ export TRANSFORMERS_CACHE="/p/PROJECTDIRNAME/huggingface/hub"
 python main.py
 ```
 
-Example of Rivanna slurm script
+Example of Rivanna slurm script:
 ```
 #!/bin/bash -l
 
@@ -90,5 +95,7 @@ export TRANSFORMERS_CACHE="/scratch/COMPUTINGID/PROJECTDIRNAME/huggingface/hub"
 
 python main.py
 ```
+
+(This script uses GPUs on the GPUPOD https://www.rc.virginia.edu/userinfo/rivanna/basepod/)
 
 

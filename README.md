@@ -100,7 +100,19 @@ export TRANSFORMERS_CACHE="/scratch/COMPUTINGID/PROJECTDIRNAME/huggingface/hub"
 
 python main.py
 ```
-
 (This script uses GPUs on the GPUPOD https://www.rc.virginia.edu/userinfo/rivanna/basepod/)
 
 #### Warning: Do NOT use the CUDA_VISIBLE_DEVICES flag on rivanna
+
+### SLURM Commands
+Run your script:
+
+`sbatch SCRIPTNAME.sh`
+
+Check the status of your scripts:
+
+`squeue | grep COMPUTINGID`
+
+Checking allocation usage:
+`allocations -a ORGACCOUNTNAME`
+
